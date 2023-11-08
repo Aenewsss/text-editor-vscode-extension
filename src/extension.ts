@@ -38,19 +38,33 @@ export function activate(context: vscode.ExtensionContext) {
 				},
 				{
 					label: 'Lowercase',
-				}
-				]
+				}]
 
 				quickPick.show()
+				quickPick.onDidChangeSelection(item => {
+					const operator = item[0].label
 
-				highlighted.toLocaleUpperCase()
-				vscode.window.showInformationMessage(highlighted);
+					switch (operator) {
+						case 'Capitalize':
+							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							break;
+						case 'First letter capitalize':
+							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							break;
+						case 'CAPS LOCK':
+							editor.edit(test => test.replace(selectionRange, highlighted.toUpperCase()))
+							break;
+						case 'Lowercase':
+							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							break;
+					}
+				})
+				vscode.window.showInformationMessage('Text changed!')
 			} else vscode.window.showErrorMessage('You must select a text')
 		}
 
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Modified Text!');
 	});
 
 	context.subscriptions.push(disposable);
