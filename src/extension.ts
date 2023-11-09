@@ -46,25 +46,33 @@ export function activate(context: vscode.ExtensionContext) {
 
 					switch (operator) {
 						case 'Capitalize':
-							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							const textSplitted = highlighted.split(" ")
+							const textSplittedCapitalized = textSplitted.map(el => el[0].toUpperCase() + el.slice(1, el.length))
+							const textCapitalized = textSplittedCapitalized.toString().replaceAll(",", " ")
+
+							editor.edit(selection => selection.replace(selectionRange, textCapitalized))
+							vscode.window.showInformationMessage('Text changed!')
 							break;
 						case 'First letter capitalize':
-							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							const lowerCaseText = highlighted.toLocaleLowerCase()
+							const firstLetterCapitalized = lowerCaseText[0].toUpperCase()
+							const formattedText = firstLetterCapitalized + lowerCaseText.slice(1, lowerCaseText.length)
+
+							editor.edit(selection => selection.replace(selectionRange, formattedText))
+							vscode.window.showInformationMessage('Text changed!')
 							break;
 						case 'CAPS LOCK':
-							editor.edit(test => test.replace(selectionRange, highlighted.toUpperCase()))
+							editor.edit(selection => selection.replace(selectionRange, highlighted.toUpperCase()))
+							vscode.window.showInformationMessage('Text changed!')
 							break;
 						case 'Lowercase':
-							editor.edit(test => test.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							editor.edit(selection => selection.replace(selectionRange, highlighted.toLocaleLowerCase()))
+							vscode.window.showInformationMessage('Text changed!')
 							break;
 					}
 				})
-				vscode.window.showInformationMessage('Text changed!')
 			} else vscode.window.showErrorMessage('You must select a text')
 		}
-
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 	});
 
 	context.subscriptions.push(disposable);
