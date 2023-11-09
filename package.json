@@ -2,7 +2,7 @@
   "name": "edit-text-aenewsss",
   "displayName": "Modify My Text",
   "description": "a text editor to quickly capitalize, lowercase, uppercase and CAPS LOCK your selected text ",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.84.0"
   },
