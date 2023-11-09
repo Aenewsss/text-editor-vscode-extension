@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.84.0"
   },
+  "publisher": "AenMartinelli",
   "repository": {
     "type": "git",
     "url": "https://github.com/Aenewsss/text-editor-vscode-extension"
