@@ -1,6 +1,6 @@
 {
   "name": "edit-text-aenewsss",
-  "displayName": "edit-text",
+  "displayName": "Modify My Text",
   "description": "a text editor to quickly capitalize, lowercase, uppercase and CAPS LOCK your selected text ",
   "version": "0.0.1",
   "engines": {
@@ -14,6 +14,7 @@
   "categories": [
     "Other"
   ],
+  "icon": "icon.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
